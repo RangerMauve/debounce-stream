@@ -1,0 +1,32 @@
+{
+  "name": "debounce-stream",
+  "version": "1.0.0",
+  "description": "A stream that only forwards input once in a given interval",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/RangerMauve/debounce-stream.git"
+  },
+  "keywords": [
+    "stream",
+    "debounce",
+    "rate",
+    "flow",
+    "limit",
+    "time"
+  ],
+  "author": "RangerMauve",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/RangerMauve/debounce-stream/issues"
+  },
+  "homepage": "https://github.com/RangerMauve/debounce-stream",
+  "devDependencies": {
+    "interval-stream": "^0.2.0",
+    "stdout": "0.0.3",
+    "stream-array": "^1.0.1"
+  }
+}
