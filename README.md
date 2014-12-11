@@ -23,7 +23,7 @@ npm install --save debounce-stream
 ## Example
 
 ``` javascript
-var DebounceStream = require("../");
+var DebounceStream = require("debounce-stream");
 var IntervalStream = require("interval-stream");
 var StreamArray = require("stream-array");
 var stdout = require("stdout")();
