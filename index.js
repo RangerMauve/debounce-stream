@@ -15,8 +15,8 @@ function DebounceStream(interval, options) {
 	// Construct the transform stream
 	var stream = new Transform(options);
 
-	// Track the reference retruned by setTimeout
-	var timeout = null;
+	// Track the reference returned by setTimeout
+	var timeoutId = null;
 
 	// Whether the state is paused or not
 	var paused = false;
@@ -35,20 +35,20 @@ function DebounceStream(interval, options) {
 		// Flag that there is a value to output
 		has_value = true;
 		// If paused just ignore outputting it for now
-		if (paused) callback();
-		else {
-			// If we aren't paused, say that there is no value
-			has_value = false;
-			// Pause
-			pause();
-			// Pass the data down the stream
-			callback(null, last_value);
-		}
+		if (paused) return callback();
+		
+		// If we aren't paused, say that there is no value
+		has_value = false;
+		// Pause
+		pause();
+		// Pass the data down the stream
+		callback(null, last_value);
+	
 	}
 
 	// When the stream ends, clear any pause timeout and pass the last value
 	stream._flush = function (callback) {
-		clearTimeout(timeout);
+		clearTimeout(timeoutId);
 		if (has_value) this.push(last_value);
 		callback();
 	}
@@ -58,9 +58,9 @@ function DebounceStream(interval, options) {
 		// Set a flag
 		paused = true;
 		// Clear any previous timeout, just in case
-		clearTimeout(timeout);
+		clearTimeout(timeoutId);
 		// Set a new timeout to unpause after the given interval
-		timeout = setTimeout(unpause, interval);
+		timeoutId = setTimeout(unpause, interval);
 	}
 
 	// Function for unpausing and outputting the last value if it exists
