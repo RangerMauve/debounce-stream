@@ -3,6 +3,8 @@
 This stream takes in events of data and only passes the event on once in a given interval.
 Once the interval is over, it outputs the last value that was passed in
 
+  Note: This has been superceeded by [fardog](https://github.com/fardog)'s [debounce-stream](https://github.com/fardog/debounce-stream) as of version 2.0.0.
+
 ## Installing
 
 ``` bash
